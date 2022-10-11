@@ -1,0 +1,9 @@
+body {
+  padding-top: 50px;
+}
+.notification {
+  position: absolute;
+  padding: 15px;
+  background-color: blue;
+  color: #ffff;
+}

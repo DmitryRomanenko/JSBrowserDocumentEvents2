@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="index.css" />
+    <script>
+      document.onclick = function (e) {
+        coords.innerHTML = e.clientX + ':' + e.clientY;
+      };
+    </script>
+  </head>
+
+  <body>
+    Клацніть будь-де для отримання координат у контексті вікна.
+    <br />
+    Це для тестування, щоб перевірити результат, який ви отримали за допомогою JavaScript.
+    <br />
+    <div id="coords">(координати з'являться тут)</div>
+
+    <div id="field">
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    </div>
+
+    <div class="triangle-right" style="left: -20px; top: -176px">1</div>
+    <div class="triangle-right" style="left: -10px; top: -178px">3</div>
+    <div class="triangle-right" style="left: 190px; top: -40px">4</div>
+    <div class="triangle-right" style="left: 200px; top: -42px">2</div>
+
+    <script>
+      const box = document.querySelector('#field');
+      let topPos = `
+      X:${box.getBoundingClientRect().left}, 
+      Y:${box.getBoundingClientRect().top}`;
+      console.log(topPos);
+      let bottomPos = `
+      X:${box.getBoundingClientRect().right}, 
+      Y:${box.getBoundingClientRect().bottom}`;
+      console.log(bottomPos);
+      let topPosInner = `
+      X:${box.getBoundingClientRect().left + box.clientLeft}, 
+      Y:${box.getBoundingClientRect().top + box.clientTop}`;
+      console.log(topPosInner);
+      let bottomPosInner = `
+      X:${box.getBoundingClientRect().right - parseInt(getComputedStyle(box).borderRight)}, 
+      Y:${box.getBoundingClientRect().bottom - parseInt(getComputedStyle(box).borderBottom)}`;
+      console.log(bottomPosInner);
+    </script>
+  </body>
+</html>

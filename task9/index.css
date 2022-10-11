@@ -1,0 +1,18 @@
+ul {
+  display: none;
+  list-style-type: none;
+}
+.active {
+  display: block;
+}
+span {
+  display: inline-block;
+}
+.rotate {
+  transform: rotate(90deg);
+}
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
