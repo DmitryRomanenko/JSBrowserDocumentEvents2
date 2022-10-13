@@ -32,8 +32,6 @@
         let top = coords.top + pageYOffset;
         let bottom = coords.bottom + pageYOffset;
         let right = coords.right + pageXOffset;
-        let { borderLeft, paddingBottom, paddingTop, paddingLeft, paddingRight } =
-          window.getComputedStyle(anchor);
         switch (position) {
           case 'top':
             elem.style.cssText = `
@@ -52,23 +50,24 @@
             position: absolute;
             left: ${left}px;
             top: ${bottom}px;`;
+            break;
           case 'bottom-in':
             elem.style.cssText = `
             position: absolute;
-            left: ${left + parseInt(borderLeft) + parseInt(paddingLeft)}px;
-            top: ${bottom - parseInt(paddingBottom) - elem.offsetHeight}px;`;
+            left: ${left}px;
+            top: ${bottom - elem.offsetHeight}px;`;
             break;
           case 'top-in':
             elem.style.cssText = `
             position: absolute;
-            left: ${left + parseInt(borderLeft) + parseInt(paddingLeft)}px;
-            top: ${top + parseInt(paddingTop)}px;`;
+            left: ${left}px;
+            top: ${top}px;`;
             break;
           case 'right-in':
             elem.style.cssText = `
             position: absolute;
-            left: ${right - parseInt(paddingRight) - elem.offsetWidth}px;
-            top: ${top + parseInt(paddingTop)}px;`;
+            left: ${right - elem.offsetWidth}px;
+            top: ${top}px;`;
             break;
           default:
             throw new Error();
@@ -81,7 +80,6 @@
         note.className = 'note';
         note.innerHTML = html;
         document.body.append(note);
-
         positionAt(anchor, position, note);
       }
 
@@ -90,9 +88,9 @@
       showNote(blockquote, 'top', 'note above');
       showNote(blockquote, 'right', 'note at the right');
       showNote(blockquote, 'bottom', 'note below');
-      showNote(blockquote, 'top-in', 'note below');
-      showNote(blockquote, 'bottom-in', 'note below');
-      showNote(blockquote, 'right-in', 'note below');
+      showNote(blockquote, 'top-in', 'note top-in');
+      showNote(blockquote, 'bottom-in', 'bottom-in');
+      showNote(blockquote, 'right-in', 'right-in');
     </script>
   </body>
 </html>
