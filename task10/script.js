@@ -9,4 +9,7 @@ document.querySelectorAll('.pane').forEach((item) => {
     right: 10px;`;
   item.style.cssText = 'position: relative';
   item.append(btn);
+  btn.addEventListener('click', (e) => {
+    item.style.display = 'none';
+  });
 });
